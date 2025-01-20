@@ -5,14 +5,15 @@ SELECT nome,cognome
 FROM Clienti
 WHERE EXTRACT(YEAR FROM anno_nascita )=1982;
 
-SELECT * FROM Fatture
+SELECT COUNT (*) AS numero_fattura 
+FROM Fatture
 WHERE iva =20;
  
 SELECT * 
 FROM Prodotti
 WHERE EXTRACT(YEAR FROM dataAttivazione)=2017 AND (inProduzione=TRUE OR inCommercio=TRUE);
 
-SELECT Fatture.numeroFattura, Fatture.importo, Fatture.iva, Fatture.dataFattura,
+SELECT Fatture.numero_fattura, Fatture.importo, Fatture.iva, Fatture.dataFattura,
        Clienti.nome, Clienti.cognome, Clienti.regione_residenza
 FROM Fatture
 JOIN Clienti ON Fatture.idCliente=Clienti.numeroCliente
